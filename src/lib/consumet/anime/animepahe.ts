@@ -1,3 +1,4 @@
+
 import { load } from 'cheerio';
 
 import {
@@ -25,7 +26,7 @@ class AnimePahe extends AnimeParser {
    */
   override search = async (query: string): Promise<ISearch<IAnimeResult>> => {
     try {
-      const { data } = await this.client.get(`${this.baseUrl}/api?m=search&q=${encodeURIComponent(query)}`, {
+      const { data } = await this.client.get(`/api?m=search&q=${encodeURIComponent(query)}`, {
         headers: this.Headers(false),
       });
 
@@ -57,7 +58,7 @@ class AnimePahe extends AnimeParser {
     };
 
     try {
-      const res = await this.client.get(`${this.baseUrl}/anime/${id}`, { headers: this.Headers(id) });
+      const res = await this.client.get(`/anime/${id}`, { headers: this.Headers(id) });
       const $ = load(res.data);
 
       animeInfo.title = $('div.title-wrapper > h1 > span').first().text();
@@ -102,7 +103,7 @@ class AnimePahe extends AnimeParser {
       if (episodePage < 0) {
         const {
           data: { last_page, data },
-        } = await this.client.get(`${this.baseUrl}/api?m=release&id=${id}&sort=episode_asc&page=1`, {
+        } = await this.client.get(`/api?m=release&id=${id}&sort=episode_asc&page=1`, {
           headers: this.Headers(id),
         });
 
@@ -144,7 +145,7 @@ class AnimePahe extends AnimeParser {
       const animeId = episodeId.split('/')[0];
       const epId = episodeId.split('/')[1];
 
-      const res = await this.client.get(`${this.baseUrl}/play/${animeId}/${epId}`, {
+      const res = await this.client.get(`/play/${animeId}/${epId}`, {
         headers: this.Headers(animeId),
       });
 
@@ -216,7 +217,7 @@ class AnimePahe extends AnimeParser {
 
   private fetchEpisodes = async (session: string, page: number): Promise<IAnimeEpisode[]> => {
     const res = await this.client.get(
-      `${this.baseUrl}/api?m=release&id=${session}&sort=episode_asc&page=${page}`,
+      `/api?m=release&id=${session}&sort=episode_asc&page=${page}`,
       { headers: this.Headers(session) }
     );
 
@@ -263,7 +264,7 @@ class AnimePahe extends AnimeParser {
       'upgrade-insecure-requests': '1',
       'x-requested-with': 'XMLHttpRequest',
       'referer': `https://animepahe.ru/`,
-      'user-agent': USER_AGENT,
+      'user-agent': 'consumet',
     };
   }
 }
