@@ -16,7 +16,7 @@ import { USER_AGENT } from '../utils';
 
 class AnimePahe extends AnimeParser {
   override readonly name = 'AnimePahe';
-  protected override baseUrl = 'https://animepahe.ru';
+  protected override baseUrl = 'https://cors-anywhere.herokuapp.com/https://animepahe.ru';
   protected override logo = 'https://animepahe.com/pikacon.ico';
   protected override classPath = 'ANIME.AnimePahe';
 
@@ -262,14 +262,7 @@ class AnimePahe extends AnimeParser {
       'sec-fetch-site': 'same-origin',
       'upgrade-insecure-requests': '1',
       'x-requested-with': 'XMLHttpRequest',
-      'x-forwarded-for': '34.52.138.238',
-      'x-real-ip': '34.52.138.238',
-      'x-originating-ip': '34.52.138.238',
-      'cf-connecting-ip': '34.52.138.238',
-      'true-client-ip': '34.52.138.238',
-      'via': '1.1 34.52.138.238',
-      'forwarded': 'for=34.52.138.238;proto=https',
-      'referer': sessionId ? `https://animepahe.ru/anime/${sessionId}` : 'https://animepahe.ru',
+      'referer': `https://animepahe.ru/`,
       'user-agent': USER_AGENT,
     };
   }
