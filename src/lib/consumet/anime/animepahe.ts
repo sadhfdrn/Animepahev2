@@ -1,4 +1,3 @@
-
 import { load } from 'cheerio';
 
 import {
@@ -250,6 +249,9 @@ class AnimePahe extends AnimeParser {
       'authority': 'animepahe.ru',
       'accept': 'application/json, text/javascript, */*; q=0.01',
       'accept-language': 'en-US,en;q=0.9',
+      'accept-encoding': 'gzip, deflate, br',
+      'cache-control': 'no-cache',
+      'pragma': 'no-cache',
       'cookie': '__ddg2_=;',
       'dnt': '1',
       'sec-ch-ua': '"Not A(Brand";v="99", "Microsoft Edge";v="121", "Chromium";v="121"',
@@ -258,7 +260,15 @@ class AnimePahe extends AnimeParser {
       'sec-fetch-dest': 'empty',
       'sec-fetch-mode': 'cors',
       'sec-fetch-site': 'same-origin',
+      'upgrade-insecure-requests': '1',
       'x-requested-with': 'XMLHttpRequest',
+      'x-forwarded-for': '34.52.138.238',
+      'x-real-ip': '34.52.138.238',
+      'x-originating-ip': '34.52.138.238',
+      'cf-connecting-ip': '34.52.138.238',
+      'true-client-ip': '34.52.138.238',
+      'via': '1.1 34.52.138.238',
+      'forwarded': 'for=34.52.138.238;proto=https',
       'referer': sessionId ? `https://animepahe.ru/anime/${sessionId}` : 'https://animepahe.ru',
       'user-agent': USER_AGENT,
     };
